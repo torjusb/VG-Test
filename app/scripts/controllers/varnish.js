@@ -2,6 +2,9 @@
 
 angular.module('vgApp')
     .controller('VarnishCtrl', function ($scope, $http, logParser) {
+        // Displays loading spinners
+        $scope.loadingHosts = $scope.loadingUris = true;
+
         $http.get('http://crossorigin.me/http://tech.vg.no/intervjuoppgave/varnish.log', {
             transformResponse: function (data) {
                 // Each request in the log is separated by a new line,
@@ -44,6 +47,7 @@ angular.module('vgApp')
                     hits: hits
                 });
             });
+            $scope.loadingHosts = false;
 
             // Do the same process for the `uriMap`.
             $scope.uriMap = [];
@@ -53,5 +57,6 @@ angular.module('vgApp')
                     hits: hits
                 });
             });
+            $scope.loadingUris = false;
         });
     });

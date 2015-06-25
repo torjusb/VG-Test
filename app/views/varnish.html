@@ -1,9 +1,9 @@
-Top 5 host names:
+Top 5 host names: <img ng-show="loadingHosts" src="../images/ajax-loader.gif" />
 <ul>
     <li ng-repeat="host in hostMap | orderBy:'-hits' | limitTo:5">{{host.host}}: {{host.hits}}</li>
 </ul>
 
-Top 5 URIs:
+Top 5 URIs: <img ng-show="loadingUris" src="../images/ajax-loader.gif" />
 <ul>
     <li ng-repeat="uri in uriMap | orderBy:'-hits' | limitTo:5">{{uri.uri}}: {{uri.hits}}</li>
 </ul>
