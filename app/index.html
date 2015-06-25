@@ -29,10 +29,10 @@
 
                 <div class="collapse navbar-collapse" id="js-navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#/">Home</a></li>
-                        <li><a href="#/varnish">Varnish log</a></li>
-                        <li><a href="#/rss">RSS Feed</a></li>
-                        <li><a href="#/json">JSON</a></li>
+                        <nav-elem route="/">Home</nav-elem>
+                        <nav-elem route="/varnish">Varnish Log</nav-elem>
+                        <nav-elem route="/rss">RSS Feed</nav-elem>
+                        <nav-elem route="/json">JSON Feed</nav-elem>
                     </ul>
                 </div>
             </div>
@@ -59,6 +59,7 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services.js"></script>
+    <script src="scripts/directives.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/json.js"></script>
     <script src="scripts/controllers/varnish.js"></script>
