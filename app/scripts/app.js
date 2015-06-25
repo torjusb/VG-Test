@@ -12,7 +12,8 @@ angular
     .module('vgApp', [
         'ngAnimate',
         'ngResource',
-        'ngRoute'
+        'ngRoute',
+        'xml'
     ])
     .config(function ($routeProvider) {
         $routeProvider
