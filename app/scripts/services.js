@@ -42,6 +42,17 @@ angular
             topUris: [] // `{uri: '/foo', hits: 96}`
         };
 
+        var sortByHits = function (a, b) {
+            if (a.hits < b.hits) {
+                return 1;
+            }
+            if (a.hits > b.hits) {
+                return -1;
+            }
+
+            return 0;
+        };
+
         // Store the promise in a variable, so we know when the data is ready.
         var dataReady = $http.get('http://crossorigin.me/http://tech.vg.no/intervjuoppgave/varnish.log', {
             transformResponse: function (data) {
@@ -76,12 +87,14 @@ angular
             angular.forEach(hostMap, function (hits, host) {
                 data.topHosts.push({host: host, hits: hits});
             });
+            data.topHosts = data.topHosts.sort(sortByHits);
 
             // Do the same process for the `uriMap`.
             data.topUris = [];
             angular.forEach(uriMap, function (hits, uri) {
                 data.topUris.push({uri: uri, hits: hits});
             });
+            data.topUris = data.topUris.sort(sortByHits);
         });
 
         return {
