@@ -36,6 +36,7 @@ angular.module('vgApp')
             // Will contain data about how many requests each host name has
             // had. The key is the host name, and the value is number of hits.
             var hostMap = {};
+            var uriMap = {};
 
             angular.forEach(response.data, function (request) {
                 if (!request) {
@@ -49,6 +50,13 @@ angular.module('vgApp')
                 } else {
                     hostMap[request.host] = 1;
                 }
+
+                // Do the same process with the URIs
+                if (typeof uriMap[request.uri] !== 'undefined') {
+                    uriMap[request.uri]++;
+                } else {
+                    uriMap[request.uri] = 1;
+                }
             });
 
             // Turn the `hostMap` object into an array of objects. This will
@@ -58,6 +66,15 @@ angular.module('vgApp')
             angular.forEach(hostMap, function (hits, host) {
                 $scope.hostMap.push({
                     host: host,
+                    hits: hits
+                });
+            });
+
+            // Do the same process for the `uriMap`.
+            $scope.uriMap = [];
+            angular.forEach(uriMap, function (hits, uri) {
+                $scope.uriMap.push({
+                    uri: uri,
                     hits: hits
                 });
             });
