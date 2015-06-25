@@ -24,6 +24,10 @@ angular
                 templateUrl: 'views/about.html',
                 controller: 'AboutCtrl'
             })
+            .when('/json', {
+                templateUrl: 'views/json.html',
+                controller: 'JsonCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

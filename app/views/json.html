@@ -1,0 +1,4 @@
+<div ng-repeat="article in articles | orderBy:'dateTime':true">
+    <h2><a href="{{article.link}}">{{article.title}}</a></h2>
+    <p>{{article.description}}</p>
+</div>
