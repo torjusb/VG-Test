@@ -25,6 +25,10 @@ angular
                 templateUrl: 'views/varnish.html',
                 controller: 'VarnishCtrl'
             })
+            .when('/rss', {
+                templateUrl: 'views/rss.html',
+                controller: 'RssCtrl'
+            })
             .when('/json', {
                 templateUrl: 'views/json.html',
                 controller: 'JsonCtrl'

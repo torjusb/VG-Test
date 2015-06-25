@@ -1,0 +1,6 @@
+<ul
+    <li ng-repeat="article in articles | orderBy:'pubDate':true">
+        <a href="{{article.link}}">{{article.title}}</a>
+        {{article.pubDate}}
+    </li>
+</ul>
