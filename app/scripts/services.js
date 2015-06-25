@@ -21,9 +21,11 @@ angular
                     };
 
                     // Parse the URL, to extract the host name and URI.
-                    var matchUrl = parsed.url.match(/^\w+:\/\/([^\/]+)\/?(.+)?$/);
+                    var matchUrl = parsed.url.match(/^\w+:\/\/([^\/]+)(\/.*)?$/);
                     parsed.host = matchUrl[1];
-                    parsed.uri = matchUrl[2];
+
+                    // If we can't extract a URI, the URI is '/'.
+                    parsed.uri = typeof matchUrl[2] !== 'undefined' ? matchUrl[2] : '/';
                 }
 
                 return parsed;
