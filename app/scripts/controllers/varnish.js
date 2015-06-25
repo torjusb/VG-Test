@@ -6,7 +6,7 @@ angular.module('vgApp')
             transformResponse: function (data) {
                 // Each request in the log is separated by a new line,
                 // split on it, to get an array of all the requests.
-                var rows = data.split("\n");
+                var rows = data.trim().split("\n");
 
                 // Parse each row. This will give us an array of objects back.
                 return rows.map(logParser.parseRow);
@@ -18,10 +18,6 @@ angular.module('vgApp')
             var uriMap = {};
 
             angular.forEach(response.data, function (request) {
-                if (!request) {
-                    return;
-                }
-
                 // Add the hostname to the `hostMap` if it isn't added yet,
                 // and keep incrementing it's counter every time we see it.
                 if (typeof hostMap[request.host] !== 'undefined') {
