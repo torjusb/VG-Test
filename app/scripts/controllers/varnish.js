@@ -1,36 +1,15 @@
 'use strict';
 
 angular.module('vgApp')
-    .controller('VarnishCtrl', function ($scope, $http) {
+    .controller('VarnishCtrl', function ($scope, $http, logParser) {
         $http.get('http://crossorigin.me/http://tech.vg.no/intervjuoppgave/varnish.log', {
             transformResponse: function (data) {
                 // Each request in the log is separated by a new line,
                 // split on it, to get an array of all the requests.
                 var rows = data.split("\n");
 
-                // Map the request into readable data
-                return rows.map(function(row) {
-                    // Parse the row. This will give us the ip, date, HTTP method
-                    // and URL.
-                    var match = row.match(/^(\S+) \S+ \S+ \[([^\]]+)\] "([A-Z]+) ([^ ]+) ([^"])*"/);
-                    var parsed;
-
-                    if (match) {
-                        parsed = {
-                            ip: match[1],
-                            date: match[2],
-                            method: match[3],
-                            url: match[4]
-                        };
-
-                        // Parse the URL, to extract the host name and URI.
-                        var matchUrl = parsed.url.match(/^\w+:\/\/([^\/]+)\/?(.+)?$/);
-                        parsed.host = matchUrl[1];
-                        parsed.uri = matchUrl[2];
-                    }
-
-                    return parsed;
-                });
+                // Parse each row. This will give us an array of objects back.
+                return rows.map(logParser.parseRow);
             }
         }).then(function (response) {
             // Will contain data about how many requests each host name has
