@@ -20,9 +20,9 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
+            .when('/varnish', {
+                templateUrl: 'views/varnish.html',
+                controller: 'VarnishCtrl'
             })
             .when('/json', {
                 templateUrl: 'views/json.html',

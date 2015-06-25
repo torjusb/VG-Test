@@ -1,0 +1,4 @@
+Top 5 host names:
+<ul>
+    <li ng-repeat="host in hostMap | orderBy:'-hits' | limitTo:5">{{host.host}}: {{host.hits}}</li>
+</ul>
