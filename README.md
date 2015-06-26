@@ -57,3 +57,11 @@ Then do the following:
   4. Run `grunt serve`. This will start a simple web server on `localhost:9000`.
      Your browser should open, and you should be able to use the app. The port
      can be changed in Gruntfile.js in case it is already taken.
+
+## Tests
+
+The project is set up for running tests with Karma and Jasmine. Only a single
+test is implemented, and in a very basic form. This is just to show that it
+works, and a single test is better than no tests!
+
+To run the tests, simply run: `grunt test`.
