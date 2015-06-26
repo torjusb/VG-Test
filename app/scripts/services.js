@@ -119,4 +119,24 @@ angular
                 return defer.promise;
             }
         };
+    })
+    .factory('rss', function (x2js) {
+        return {
+            // Parse an RSS feed, and return it as Object.
+            parse: function (rss) {
+                // Convert the XML feed into plain objects.
+                var feedData = x2js.xml_str2json(rss);
+
+                // Ensure dates are actual Date objects, so they can be
+                // formatted easily.
+                feedData.rss.channel.lastBuildDate = new Date(feedData.rss.channel.lastBuildDate);
+                feedData.rss.channel.item = feedData.rss.channel.item.map(function (item) {
+                    item.pubDate = new Date(item.pubDate);
+
+                    return item;
+                });
+
+                return feedData;
+            }
+        };
     });
