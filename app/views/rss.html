@@ -1,6 +1,8 @@
-<ul
+<ul class="rss-feed">
     <li ng-repeat="article in articles | orderBy:'pubDate':true">
-        <a href="{{article.link}}">{{article.title}}</a>
+        <a href="{{article.link}}" ng-class="{'no-title': !article.title}">
+            {{article.title ? article.title : 'No title'}}
+        </a>
         {{article.pubDate | date:'medium'}}
     </li>
 </ul>
