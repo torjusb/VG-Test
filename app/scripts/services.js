@@ -105,7 +105,7 @@ angular
                 // from Varnish is loaded.
                 dataReady.then(function () {
                     defer.resolve(data.topHosts);
-                });
+                }, defer.reject);
 
                 return defer.promise;
             },
@@ -114,7 +114,7 @@ angular
 
                 dataReady.then(function () {
                     defer.resolve(data.topUris);
-                });
+                }, defer.reject);
 
                 return defer.promise;
             }

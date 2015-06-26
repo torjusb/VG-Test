@@ -1,9 +1,15 @@
-Top 5 host names: <img ng-show="!hosts" src="../images/ajax-loader.gif" />
-<ul>
-    <li ng-repeat="hostData in hosts | limitTo:5">{{hostData.host}}: {{hostData.hits}}</li>
-</ul>
+<div>
+    Top 5 host names: <img ng-show="!hosts && !hostsError" src="../images/ajax-loader.gif" />
+    <ul ng-show="hosts">
+        <li ng-repeat="hostData in hosts | limitTo:5">{{hostData.host}}: {{hostData.hits}}</li>
+    </ul>
+    <p ng-show="hostsError" class="alert alert-danger">{{hostsError}}</p>
+</div>
 
-Top 5 URIs: <img ng-show="!uris" src="../images/ajax-loader.gif" />
-<ul>
-    <li ng-repeat="uriData in uris | limitTo:5">{{uriData.uri}}: {{uriData.hits}}</li>
-</ul>
+<div>
+    Top 5 URIs: <img ng-show="!uris && !urisError" src="../images/ajax-loader.gif" />
+    <ul>
+        <li ng-repeat="uriData in uris | limitTo:5">{{uriData.uri}}: {{uriData.hits}}</li>
+    </ul>
+    <p ng-show="urisError" class="alert alert-danger">{{urisError}}</p>
+</div>
