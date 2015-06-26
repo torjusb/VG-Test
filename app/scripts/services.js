@@ -139,4 +139,35 @@ angular
                 return feedData;
             }
         };
+    })
+    .factory('dateParser', function () {
+        var nbDates = [
+            'januar', 'februar', 'mars', 'april', 'mai', 'juni',
+            'juli', 'august', 'september', 'oktober', 'november', 'desember'
+        ];
+
+        return {
+            // Takes a date formatted in Norwegian, and converts it into a
+            // `Date` object.
+            // Example: '3 Mars 2012 19:47'
+            parse: function (date, time) {
+                // Parse the date, and extract the day, name of the month and
+                // the yar.
+                var parseDate = date.match(/^(\d+) (\w+) (\d+)$/);
+                var day = parseDate[1];
+                var year = parseDate[3];
+
+                // Look up the month name in the `nbDates` array to figure out
+                // the month number.
+                var monthName = parseDate[2].toLowerCase();
+                var month = nbDates.indexOf(monthName) + 1;
+
+                // Extract the hour and minutes from the time
+                var parseTime = time.match(/^(\d+):(\d+)$/);
+                var hour = parseTime[1];
+                var minutes = parseTime[2];
+
+                return new Date(year, month, day, hour, minutes);
+            }
+        };
     });

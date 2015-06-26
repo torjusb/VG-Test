@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('vgApp')
-    .controller('JsonCtrl', function ($scope, $http) {
+    .controller('JsonCtrl', function ($scope, $http, dateParser) {
         $http.get('http://crossorigin.me/http://rexxars.com/playground/testfeed/', {
             transformResponse: function (data) {
                 data = angular.fromJson(data);
                 angular.forEach(data, function (item) {
-                    item.dateTime = new Date(item.date + ' ' + item.time);
+                    item.dateTime = dateParser.parse(item.date, item.time);
                 });
 
                 return data;
