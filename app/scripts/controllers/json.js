@@ -3,9 +3,6 @@
 angular.module('vgApp')
     .controller('JsonCtrl', function ($scope, $http) {
         $http.get('http://crossorigin.me/http://rexxars.com/playground/testfeed/', {
-            headers: {
-                'Accept': 'application/json'
-            },
             transformResponse: function (data) {
                 data = angular.fromJson(data);
                 angular.forEach(data, function (item) {
