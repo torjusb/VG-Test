@@ -1,4 +1,5 @@
-<div ng-repeat="article in articles | orderBy:'dateTime':true">
+<div ng-if="articles.length" ng-repeat="article in articles | orderBy:'dateTime':true">
     <h2><a href="{{article.link}}">{{article.title}}</a></h2>
     <p>{{article.description}}</p>
 </div>
+<p ng-if="errorMsg" class="alert alert-danger">{{errorMsg}}</p>

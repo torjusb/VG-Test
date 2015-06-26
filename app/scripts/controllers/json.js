@@ -16,5 +16,7 @@ angular.module('vgApp')
             }
         }).then(function (response) {
             $scope.articles = response.data;
+        }, function (err) {
+            $scope.errorMsg = 'Could not load articles.';
         });
     });
